@@ -1,0 +1,23 @@
+.header {
+    border-bottom: 1px solid var(--gray-gray-4);
+    padding: 12px 24px 12px 18px;
+}
+
+.header-container {
+    max-width: 1920px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.header-flex {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header__logo-title {
+    font-weight: 700;
+    width: 135px;
+    line-height: 155%;
+}
