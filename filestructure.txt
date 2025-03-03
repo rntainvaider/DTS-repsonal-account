@@ -1,0 +1,76 @@
+|-- .gitignore
+|-- .pytest_cache
+    |-- .gitignore
+    |-- CACHEDIR.TAG
+    |-- README.md
+    |-- v
+|-- backend
+    |-- .env
+    |-- config.py
+    |-- CRUD.py
+    |-- database.py
+    |-- main.py
+    |-- models.py
+    |-- routers
+        |-- users.py
+        |-- __pycache__
+            |-- users.cpython-311.pyc
+    |-- schemas.py
+    |-- __pycache__
+        |-- config.cpython-311.pyc
+        |-- CRUD.cpython-311.pyc
+        |-- database.cpython-311.pyc
+        |-- main.cpython-311.pyc
+        |-- models.cpython-311.pyc
+        |-- schemas.cpython-311.pyc
+|-- frontend
+    |-- api
+        |-- userApi.ts
+    |-- package-lock.json
+    |-- package.json
+    |-- public
+        |-- favicon.ico
+        |-- index.html
+        |-- logo192.png
+        |-- logo512.png
+        |-- manifest.json
+        |-- robots.txt
+    |-- src
+        |-- App.css
+        |-- App.js
+        |-- assets
+            |-- images
+                |-- eye.svg
+                |-- header
+                    |-- help.svg
+                    |-- notifications.svg
+                |-- logo.svg
+        |-- components
+            |-- btnForm
+                |-- BtnForm.jsx
+                |-- styles.module.css
+            |-- index.js
+            |-- inputForm
+                |-- InputForm.jsx
+                |-- styles.module.css
+        |-- containers
+            |-- footer
+                |-- Footer.jsx
+                |-- styles.module.css
+            |-- header
+                |-- Header.jsx
+                |-- styles.module.css
+            |-- index.js
+            |-- registrationForm
+                |-- RegistrationForm.jsx
+                |-- styles.module.css
+        |-- index.css
+        |-- index.js
+        |-- pages
+            |-- index.js
+            |-- registration
+                |-- Registration.jsx
+                |-- styles.module.css
+|-- package-lock.json
+|-- package.json
+|-- README.md

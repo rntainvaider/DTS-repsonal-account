@@ -3,6 +3,27 @@ import { InputForm, BtnForm } from "../../components";
 import styles from "./styles.module.css";
 
 const RegistrationForm = () => {
+  const [form, setForm] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    password:"",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (form.password !== form.confirmPassword) {
+      console.log("Пароли не совпадают");
+      return;
+    }
+    console.log("Форма отправлена", form);
+  };
+
   const [step, setStep] = useState(1);
 
   const handleNextStep = (event) => {
@@ -12,9 +33,10 @@ const RegistrationForm = () => {
     }
   };
 
+
   return (
     <div>
-      <form className={styles["reg-form"]} >
+      <form onSubmit={handleSubmit} className={styles["reg-form"]} >
         <div>
           <h2 className={styles["reg-form__title"]}>
             Регистрация
@@ -31,18 +53,27 @@ const RegistrationForm = () => {
             <div className={styles["reg-form__wrapper-inputs"]}>
               <InputForm
                 type="text"
+                name="fullName"
                 label="ФИО"
                 placeholder="Введите ФИО"
+                value={form.fullName}
+                onChange={handleChange}
               />
               <InputForm
                 type="email"
+                name="email"
                 label="Email"
                 placeholder="Введите email"
+                value={form.email}
+                onChange={handleChange}
               />
               <InputForm
                 type="tel"
+                name="phone"
                 label="Телефон"
                 placeholder="Введите номер телефона"
+                value={form.phone}
+                onChange={handleChange}
               />
             </div>
             <div className={styles["reg-form__consent-checkbox"]}>
@@ -67,13 +98,19 @@ const RegistrationForm = () => {
             <div className={styles["reg-form__wrapper-inputs"]}>
               <InputForm
                 type="password"
+                name="password"
                 label="Пароль"
                 placeholder="Введите пароль"
+                value={form.password}
+                onChange={handleChange}
               />
               <InputForm
                 type="password"
+                name="confirmPassword"
                 label="Повторите пароль"
                 placeholder="Введите пароль"
+                value={form.confirmPassword}
+                onChange={handleChange}
               />
             </div>
             <div className={styles["reg-form__wrapper-btn"]}>
