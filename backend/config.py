@@ -5,8 +5,8 @@ _ = load_dotenv()
 
 username = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
-localhost = os.getenv("LOCALHOST")
-port = os.getenv("PORT")
+localhost = os.getenv("LOCALHOSTDB")
+port = os.getenv("PORTDB")
 dbname = os.getenv("DBNAME")
 
 POSTGRESQL_DATABASE_URL = (
