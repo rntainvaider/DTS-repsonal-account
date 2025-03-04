@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import SessionLocal, engine
 from models import User, Base
 from sqlalchemy.orm import Session
+from utils import hash_password
 
 # Создаём таблицы в базе данных
 Base.metadata.create_all(bind=engine)
@@ -33,8 +34,6 @@ app.add_middleware(
     allow_headers=["*"],  # Разрешаем все заголовки
 )
 
-fake_db: dict[str, UserCreate] = dict()
-
 
 @app.post("/registration", response_model=UserResponse)
 async def registration_user(user: UserCreate, db: Session = Depends(get_db)):
@@ -45,20 +44,15 @@ async def registration_user(user: UserCreate, db: Session = Depends(get_db)):
         )
 
     db_user = User(
-        email=user.email, full_name=user.full_name, password=user.password
+        email=user.email,
+        full_name=user.full_name,
+        phone=user.phone,
+        password=hash_password(user.password),
     )  # Тут лучше захешировать пароль
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
     return UserResponse(email=db_user.email)
-
-    # if user.email in fake_db:
-    #     raise HTTPException(
-    #         status_code=400, detail="пользователь с таким email уже есть"
-    #     )
-
-    # fake_db[user.email] = user
-    # return UserResponse(email=user.email)
 
 
 @app.get("/users/{email}", response_model=UserResponse)
@@ -67,12 +61,6 @@ async def get_user(email: str, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return UserResponse(email=user.email)
-
-    # if email not in fake_db:
-    #     raise HTTPException(status_code=404, detail="User not found")
-
-    # user = fake_db[email]
-    # return UserResponse(email=user.email)
 
 
 if __name__ == "__main__":

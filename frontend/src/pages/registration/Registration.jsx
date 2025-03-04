@@ -74,7 +74,7 @@ const Registration = () => {
         <div>
           <label htmlFor="email">Телефон</label>
           <input
-            type="tel"
+            type="text"
             id="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
