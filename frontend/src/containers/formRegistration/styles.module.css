@@ -1,0 +1,77 @@
+.registration {
+    width: 394px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 31px;
+    margin: 0 auto;
+}
+
+.registration__group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.registration__title {
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 130%;
+}
+
+.registration__text {
+    line-height: 155%;
+    color: var(--gray-gray-5);
+}
+
+.registration__link {
+    color: var(--blue-blue-9);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border: 1px solid var(--gray-gray-3);
+    border-radius: 8px;
+    padding: 31px;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.form__input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.checkbox-container {
+    display: flex;
+    margin: 0 auto;
+    width: 271px;
+    gap: 12px;
+}
+
+.checkbox-input {
+    /* border: 1px solid var(--gray-gray-4); */
+    /* border-radius: 2px; */
+    /* padding: 2px; */
+    /* width: 24px; */
+    /* height: 24px; */
+    cursor: pointer;
+}
+
+.checkbox-label {
+    font-weight: 600;
+    line-height: 155%;
+}
+
+.checkbox-link {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: var(--blue-blue-9);
+}
+
+.button__block {
+    margin: 0 auto;
+}

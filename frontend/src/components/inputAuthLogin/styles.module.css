@@ -1,0 +1,31 @@
+.label {
+    font-weight: 600;
+    line-height: 155%;
+    color: var(--gray-gray-9);
+}
+
+.input__wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--gray-gray-4);
+    border-radius: 2px;
+    height: 42px;
+}
+
+.input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: var(--gray-gray-5);
+    padding-left: 14px;
+}
+
+.button {
+    display: flex;
+    cursor: pointer;
+    border: none;
+    background: var(--white);
+    margin: 0 11px 0 5px;
+}
