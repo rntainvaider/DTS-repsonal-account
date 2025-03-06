@@ -1,0 +1,41 @@
+.footer {
+    border-top: 1px solid var(--gray-gray-2);
+    background: var(--gray-gray-1);
+}
+
+.container {
+    max-width: 1920px;
+    padding: 32px;
+}
+
+.footer__logo-text {
+    font-size: 14px;
+    line-height: 155%;
+    color: var(--gray-gray-6);
+}
+
+.footer__block {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1128px;
+}
+
+.address__title {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 155%;
+    color: var(--gray-gray-6);
+}
+
+.address__text {
+    font-family: var(--font3);
+    font-size: 12px;
+    line-height: 155%;
+    color: var(--gray-gray-6);
+}
+
+.address_link {
+    font-size: 12px;
+    color: var(--blue-blue-9);
+}
