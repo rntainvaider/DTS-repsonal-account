@@ -1,0 +1,40 @@
+.aside-block__one {
+    padding: 10px 16px;
+}
+
+.aside__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding-right: 6px;
+    transition: 0.5s ease;
+}
+
+.aside__link:hover {
+    background: var(--blue-blue-0);
+}
+
+.icon__container {
+    display: flex;
+    border-radius: 4px;
+    padding: 7px;
+    background: var(--blue-blue-0);
+}
+
+.aside__text {
+    font-size: 14px;
+    color: var(--black);
+}
+
+.aside-block__two {
+    margin-left: 31px;
+    padding: 10px 16px 10px 27px;
+    border-left: 1px solid var(--gray-gray-4);
+}
+
+.vertical__text {
+    font-size: 14px;
+    line-height: 155%;
+    color: var(--gray-gray-7);
+    padding-left: 6px;
+}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import InputAuthLogin from "../../components/inputAuthLogin/InputAuthLogin";
 import styles from "./styles.module.css";
 import input_img from "../../assets/inputAuthLogin/input_img.svg";
@@ -6,6 +7,7 @@ import ButtonAuthLogin from "../../components/buttonAuthLogin/ButtonAuthLogin";
 
 export default function FormRegistration() {
   const [step, setStep] = useState(1);
+  const navigate = useNavigate();
 
   const handleFirstStepSubmit = (e) => {
     e.preventDefault();
@@ -14,6 +16,7 @@ export default function FormRegistration() {
 
   const handleSecondStepSubmit = (e) => {
     e.preventDefault();
+    navigate("/information");
   };
 
   return (
@@ -24,9 +27,9 @@ export default function FormRegistration() {
         </h2>
         <p className={styles["registration__text"]}>
           Уже есть учётная запись?&nbsp;
-          <a href="!#" className={styles["registration__link"]}>
+          <Link to="/login" className={styles["registration__link"]}>
             Войти
-          </a>
+          </Link>
         </p>
       </div>
       {step === 1 ? (

@@ -48,7 +48,7 @@ async def registration_user(user: UserCreate, db: Session = Depends(get_db)):
         full_name=user.full_name,
         phone=user.phone,
         password=hash_password(user.password),
-    )  # Тут лучше захешировать пароль
+    )
     db.add(db_user)
     db.commit()
     db.refresh(db_user)

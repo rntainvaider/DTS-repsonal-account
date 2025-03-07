@@ -1,17 +1,16 @@
-import React from 'react';
 import Header from "../../containers/header/Header";
 import Footer from "../../containers/footer/Footer";
-import FormRegistration from '../../containers/formRegistration/FormRegistration';
+import FormLogin from "../../containers/formLogin/FormLogin";
 import styles from "./styles.module.css";
 
-export default function Registration() {
+export default function Login() {
   return (
-    <div className={styles["registration"]}>
+    <div className={styles["login"]}>
       <Header />
       <div className={styles["main"]}>
-        <FormRegistration />
+        <FormLogin />
       </div>
       <Footer />
     </div>
-  )
+    )
 };
