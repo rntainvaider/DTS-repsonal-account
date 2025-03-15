@@ -12,6 +12,7 @@
 
 .aside__link:hover {
     background: var(--blue-blue-0);
+    border-radius: 5px;
 }
 
 .icon__container {

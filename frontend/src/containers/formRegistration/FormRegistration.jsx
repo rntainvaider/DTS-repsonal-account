@@ -4,19 +4,55 @@ import InputAuthLogin from "../../components/inputAuthLogin/InputAuthLogin";
 import styles from "./styles.module.css";
 import input_img from "../../assets/inputAuthLogin/input_img.svg";
 import ButtonAuthLogin from "../../components/buttonAuthLogin/ButtonAuthLogin";
+import axios from "axios";
 
 export default function FormRegistration() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    password: "",
+    repeatPassword: ""
+  });
+
+  const [message, setMessage] = useState("");
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
 
-  const handleFirstStepSubmit = (e) => {
+  // Обработчик изменений в инпутах
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleFirstStepSubmit = async (e) => {
     e.preventDefault();
     setStep(2);
   };
 
-  const handleSecondStepSubmit = (e) => {
+  const handleSecondStepSubmit = async (e) => {
     e.preventDefault();
-    navigate("/information");
+
+    // Проверка на совпадение паролей
+    if (formData.password !== formData.repeatPassword) {
+      setMessage("Пароли не совпадают!");
+      alert("Пароли не совпадают!")
+      return;
+    }
+
+    try {
+      // Отправляем данные на сервер при клике на "Зарегистрироваться"
+      const data = {
+        full_name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        password: formData.password
+      }
+      const response = await axios.post("http://127.0.0.1:8000/registration/", data);
+      setMessage(`Пользователь ${response.data.username} зарегистрирован!`);
+      navigate("/information"); // Переход на другую страницу после успешной регистрации
+    } catch (error) {
+      setMessage(error.response?.data?.detail || "Ошибка регистрации");
+    }
   };
 
   return (
@@ -35,9 +71,9 @@ export default function FormRegistration() {
       {step === 1 ? (
         <form action="" onSubmit={handleFirstStepSubmit} className={styles["form"]}>
           <div className={styles["form__input-group"]}>
-            <InputAuthLogin label="ФИО" name="fullName" value="" type="text" placeholder="Введите ФИО" />
-            <InputAuthLogin label="E-mail" name="email" value="" type="email" placeholder="Введите E-mail" />
-            <InputAuthLogin label="Телефон" name="phone" value="" type="tel" placeholder="Введите номер телефона" />
+            <InputAuthLogin label="ФИО" name="fullName" value={formData.fullName} onChange={handleChange} type="text" placeholder="Введите ФИО" />
+            <InputAuthLogin label="E-mail" name="email" value={formData.email} type="email" onChange={handleChange} placeholder="Введите E-mail" />
+            <InputAuthLogin label="Телефон" name="phone" value={formData.phone} type="tel" onChange={handleChange} placeholder="Введите номер телефона" />
           </div>
           <div className={styles["checkbox-container"]}>
             <input type="checkbox" id="consent" className={styles["checkbox-input"]} />
@@ -55,8 +91,8 @@ export default function FormRegistration() {
       ) : (
         <form action="" onSubmit={handleSecondStepSubmit} className={styles["form"]}>
           <div className={styles["form__input-group"]}>
-            <InputAuthLogin label="Пароль" name="password" value="" type="password" placeholder="Введите пароль" srcImg={input_img} />
-            <InputAuthLogin label="Повторите пароль" name="password_repeat" value="" type="password" placeholder="Введите пароль" srcImg={input_img} />
+            <InputAuthLogin label="Пароль" name="password" value={formData.password} type="password" onChange={handleChange} placeholder="Введите пароль" srcImg={input_img} />
+            <InputAuthLogin label="Повторите пароль" name="repeatPassword" value={formData.repeatPassword} type="password" onChange={handleChange} placeholder="Введите пароль" srcImg={input_img} />
           </div>
           <div className={styles["button__block"]}>
             <ButtonAuthLogin type="submit" value="Зарегистрироваться" />
